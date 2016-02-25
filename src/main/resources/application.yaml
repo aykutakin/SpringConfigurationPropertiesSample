@@ -1,2 +1,4 @@
 segment:
-  list: SEG1,SEG2
+  list:
+    - SEG1
+    - SEG2

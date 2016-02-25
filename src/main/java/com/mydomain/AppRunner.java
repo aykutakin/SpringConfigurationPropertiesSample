@@ -1,21 +1,22 @@
 package com.mydomain;
 
-import org.springframework.beans.factory.annotation.Value;
+import com.mydomain.config.SegmentListConfig;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.ApplicationArguments;
 import org.springframework.boot.ApplicationRunner;
+import org.springframework.boot.context.properties.EnableConfigurationProperties;
 import org.springframework.stereotype.Component;
 
-import java.util.List;
-
 @Component
+@EnableConfigurationProperties
 public class AppRunner implements ApplicationRunner {
 
-    @Value("#{'${segment.list}'.split(',')}")
-    private List<String> segmentList;
+    @Autowired
+    private SegmentListConfig segmentListConfig;
 
     @Override
     public void run(ApplicationArguments applicationArguments) throws Exception {
-        segmentList.forEach(segment -> System.out.println(segment));
+        segmentListConfig.getList().forEach(segment -> System.out.println(segment));
     }
 
 }
