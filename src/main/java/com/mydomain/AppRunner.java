@@ -10,7 +10,7 @@ import java.util.List;
 @Component
 public class AppRunner implements ApplicationRunner {
 
-    @Value("${segment.list}")
+    @Value("#{'${segment.list}'.split(',')}")
     private List<String> segmentList;
 
     @Override
